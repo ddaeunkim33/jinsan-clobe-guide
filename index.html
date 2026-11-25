@@ -158,23 +158,9 @@ figcaption{font-size:15px;color:var(--muted);margin-top:8px}
 .fcard h3{font-size:19px;margin-bottom:4px}
 .fcard a{font-size:16px;font-weight:800;text-decoration:none;display:inline-block;margin-top:8px}
 
-/* profile */
-.profile{display:grid;grid-template-columns:200px 1fr;gap:26px;align-items:start}
-.avatar{width:200px;height:200px;border-radius:24px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.avatar b{font-size:40px;font-weight:900;letter-spacing:.02em}
-.avatar span{font-size:15px;color:var(--hero-muted)}
-.profile h3{font-size:26px}
-.profile .role{color:var(--muted);font-size:18px;margin:4px 0 14px}
-.profile li{font-size:18px}
-.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-.pill{background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:700}
-
-/* price */
-.price .amt{font-size:34px;font-weight:900;color:var(--brand);margin:6px 0 2px;font-variant-numeric:tabular-nums}
-.price .amt small{font-size:17px;font-weight:700;color:var(--muted)}
-.price .per{font-size:15px;color:var(--muted);margin-bottom:12px}
-.price li{color:var(--fg)}
-.pnote{font-size:16px;color:var(--muted);margin-top:14px}
+/* link card to about page */
+.linkcard{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:26px}
+.linkcard .btn{white-space:nowrap}
 
 /* faq */
 details{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 20px;margin-top:10px}
@@ -194,9 +180,7 @@ footer{padding:28px 0 44px;font-size:14px;color:var(--muted)}
 
 @media (max-width:860px){
   .stepper{grid-template-columns:1fr 1fr;margin-top:-18px}
-  .grid3,.grid2,.gallery,.contact{grid-template-columns:1fr}
-  .profile{grid-template-columns:1fr}
-  .avatar{width:140px;height:140px}
+  .grid3,.grid2,.gallery,.contact,.linkcard{grid-template-columns:1fr}
   section{padding-block:44px}
   body{font-size:17px}
 }
@@ -401,75 +385,16 @@ footer{padding:28px 0 44px;font-size:14px;color:var(--muted)}
   </div>
 </section>
 
-<section id="about">
+<section id="who">
   <div class="wrap">
-    <span class="eyebrow">담당 회계사</span>
-    <h2>누가 맡는지 먼저 소개합니다</h2>
-    <div class="profile" style="margin-top:22px">
-      <div class="avatar"><b>김다은</b><span>공인회계사 KICPA</span></div>
+    <div class="card soft linkcard">
       <div>
-        <h3>김다은 공인회계사</h3>
-        <p class="role">진산회계법인 이사(Partner), 여의도지점 기장·세무 총괄</p>
-        <ul>
-          <li>PwC 삼일회계법인 Tax 본부, 회계법인 공명 세무팀장을 거쳐 진산회계법인에 합류했습니다.</li>
-          <li>서울시립대학교 세무학과를 졸업했습니다.</li>
-          <li>매년 30여 개 회사의 법인세 세무조정을 맡고 있습니다. 대기업 그룹사 조정 경험이 있습니다.</li>
-          <li>경정청구로 법인세·지방세·종부세를 돌려받은 사례가 여러 건입니다. 한 건에 15억원을 환급받은 적도 있습니다.</li>
-          <li>세무조사 대응, 상속·증여세 신고, 합병·분할 같은 자본거래 세무 검토를 해 왔습니다.</li>
-        </ul>
-        <div class="pills"><span class="pill">법인세·종합소득세</span><span class="pill">부가세·원천세</span><span class="pill">경정청구</span><span class="pill">세무조사 대응</span><span class="pill">상속·증여</span><span class="pill">M&amp;A 세무</span></div>
+        <span class="eyebrow">담당 회계사와 기장료</span>
+        <h3 style="font-size:25px">누가 맡고 얼마인지 궁금하시면</h3>
+        <p style="font-size:17px;color:var(--muted);margin-top:6px">김다은 공인회계사 소개와 기장료 안내를 따로 정리했습니다.</p>
       </div>
+      <a class="btn btn-brand" href="about.html">소개와 기장료 보기</a>
     </div>
-    <div class="card" style="margin-top:22px">
-      <h3>진산회계법인</h3>
-      <p>2022년 설립, 공인회계사 28명(2025년 8월 기준). 본점 강남, 여의도지점은 국제금융로 106 한진빌딩 306호입니다. 회계감사, 세무, 실사·가치평가, 재무자문을 합니다.</p>
-    </div>
-  </div>
-</section>
-
-<section id="price" style="background:var(--brand-soft)">
-  <div class="wrap">
-    <span class="eyebrow">기장 가격표</span>
-    <h2>기장료는 이렇게 됩니다</h2>
-    <p class="sub">부가세 별도. 매출 규모와 거래량에 따라 상담 후 확정합니다.</p>
-    <div class="grid3 price" style="margin-top:22px">
-      <article class="card">
-        <span class="badge badge-if">개인사업자</span>
-        <h3>월 기장</h3>
-        <div class="amt">8만원<small>부터</small></div>
-        <div class="per">월, 부가세 별도</div>
-        <ul>
-          <li>월 기장과 증빙 정리</li>
-          <li>부가세 신고 연 2회</li>
-          <li>원천세·지급명세서·4대보험 신고</li>
-          <li>클로브 연동과 자금일보</li>
-        </ul>
-      </article>
-      <article class="card" style="border-top:6px solid var(--brand)">
-        <span class="badge badge-must">법인</span>
-        <h3>월 기장</h3>
-        <div class="amt">13만원<small>부터</small></div>
-        <div class="per">월, 부가세 별도</div>
-        <ul>
-          <li>월 기장과 증빙 정리</li>
-          <li>부가세 신고 연 4회</li>
-          <li>원천세·지급명세서·4대보험 신고</li>
-          <li>클로브 연동, 자금일보, 결산 전 손익</li>
-        </ul>
-      </article>
-      <article class="card">
-        <span class="badge badge-if">연 1회</span>
-        <h3>결산·세무조정</h3>
-        <div class="amt">별도<small>안내</small></div>
-        <div class="per">법인세·종합소득세 신고 수수료</div>
-        <ul>
-          <li>매출액과 자산 규모 기준 구간표로 안내</li>
-          <li>결산서와 신고서 작성, 세액공제·감면 검토</li>
-          <li>경정청구, 세무조사 대응은 별도 견적</li>
-        </ul>
-      </article>
-    </div>
-    <p class="pnote">여러 사업자를 함께 맡기시면 할인합니다. 월 손익 보고, 채권채무 관리, 지출결의 같은 아웃소싱은 범위를 정한 뒤 따로 견적합니다.</p>
   </div>
 </section>
 
