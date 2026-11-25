@@ -23,179 +23,182 @@
 body{margin:0} img{max-width:100%} [hidden]{display:none!important}
 </style>
 <style>
-/* Layout: one long page. Green hero with two big buttons, a 4-step strip, then the three mandatory integrations as the center of gravity, a self-check list, sign-up paths, screen walkthrough, what you get, FAQ, contact. */
+/* Layout: one long page, few words per block, big type. Hero with one big button, 4-step strip, three mandatory integrations, checklist, sign-up paths, screens, benefits, accountant profile, price table, FAQ, contact. */
 :root{
-  --bg:#F7FAF9; --fg:#1A1A1A; --muted:#55615F; --line:#D5E0DD; --card:#FFFFFF;
+  --bg:#F7FAF9; --fg:#1A1A1A; --muted:#4F5C5A; --line:#D5E0DD; --card:#FFFFFF;
   --brand:#2D5050; --brand-deep:#1D3838; --brand-soft:#E4EFEC; --brand-ink:#FFFFFF;
-  --accent:#D97A1F; --accent-soft:#FCEBD6; --accent-ink:#5A2E05;
-  --ok:#2E7D5B; --ok-soft:#DFF2E8;
-  --hero-a:#2D5050; --hero-b:#163030; --hero-fg:#FFFFFF; --hero-muted:#CFE0DB;
+  --accent:#D97A1F; --accent-soft:#FCEBD6;
+  --ok:#2E7D5B;
+  --hero-a:#2D5050; --hero-b:#163030; --hero-fg:#FFFFFF; --hero-muted:#D3E3DE;
   --shadow:0 10px 30px rgba(29,56,56,.10);
   --font:"Pretendard","Noto Sans KR",system-ui,-apple-system,"Malgun Gothic",sans-serif;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0F1716; --fg:#ECF2F0; --muted:#A5B4B0; --line:#273634; --card:#162221;
+    --bg:#0F1716; --fg:#ECF2F0; --muted:#AEBCB8; --line:#273634; --card:#162221;
     --brand:#7FB8AE; --brand-deep:#0C1A1A; --brand-soft:#1A2E2C; --brand-ink:#0C1A1A;
-    --accent:#F0A24F; --accent-soft:#3A2810; --accent-ink:#FFE3C2;
-    --ok:#5CC592; --ok-soft:#163327;
-    --hero-a:#1B3A3A; --hero-b:#0B1818; --hero-fg:#F2F7F5; --hero-muted:#B9CBC6;
+    --accent:#F0A24F; --accent-soft:#3A2810;
+    --ok:#5CC592;
+    --hero-a:#1B3A3A; --hero-b:#0B1818; --hero-fg:#F2F7F5; --hero-muted:#BFD0CB;
     --shadow:0 10px 30px rgba(0,0,0,.35);
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0F1716; --fg:#ECF2F0; --muted:#A5B4B0; --line:#273634; --card:#162221;
+  --bg:#0F1716; --fg:#ECF2F0; --muted:#AEBCB8; --line:#273634; --card:#162221;
   --brand:#7FB8AE; --brand-deep:#0C1A1A; --brand-soft:#1A2E2C; --brand-ink:#0C1A1A;
-  --accent:#F0A24F; --accent-soft:#3A2810; --accent-ink:#FFE3C2;
-  --ok:#5CC592; --ok-soft:#163327;
-  --hero-a:#1B3A3A; --hero-b:#0B1818; --hero-fg:#F2F7F5; --hero-muted:#B9CBC6;
+  --accent:#F0A24F; --accent-soft:#3A2810;
+  --ok:#5CC592;
+  --hero-a:#1B3A3A; --hero-b:#0B1818; --hero-fg:#F2F7F5; --hero-muted:#BFD0CB;
   --shadow:0 10px 30px rgba(0,0,0,.35);
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
 img{max-width:100%;height:auto;display:block}
 a{color:var(--brand)}
-h1,h2,h3{text-wrap:balance;line-height:1.25;margin:0}
+h1,h2,h3{line-height:1.25;margin:0;word-break:keep-all}
 p{margin:0}
-.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-section{padding-block:56px}
-.eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
-.lead{font-size:18px;color:var(--muted);max-width:60ch}
-h2{font-size:clamp(24px,3.4vw,32px);font-weight:900;margin-bottom:12px}
-h3{font-size:20px;font-weight:700}
-.sub{color:var(--muted);max-width:62ch}
+ul{margin:0;padding-left:22px}
+li{margin:4px 0}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:64px}
+.eyebrow{display:inline-block;font-size:15px;font-weight:800;letter-spacing:.06em;color:var(--brand);margin-bottom:12px}
+h2{font-size:clamp(28px,4vw,38px);font-weight:900;margin-bottom:14px}
+h3{font-size:22px;font-weight:800}
+.sub{color:var(--muted);font-size:19px;max-width:40ch}
+.big{font-size:20px}
 
 /* hero */
-.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:var(--hero-fg);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 3.5rem);padding-bottom:3.5rem}
+.hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:var(--hero-fg);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 4rem);padding-bottom:4rem}
 .hero .eyebrow{color:var(--hero-muted)}
-.hero h1{font-size:clamp(30px,5vw,50px);font-weight:900;letter-spacing:-.01em;margin-bottom:18px}
-.hero .lead{color:var(--hero-muted);font-size:19px;margin-bottom:28px}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 22px;border-radius:12px;font-weight:700;font-size:17px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.2}
+.hero h1{font-size:clamp(34px,5.6vw,58px);font-weight:900;letter-spacing:-.01em;margin-bottom:20px;line-height:1.22}
+.hero .lead{color:var(--hero-muted);font-size:clamp(19px,2.2vw,23px);line-height:1.6;max-width:30ch;margin-bottom:30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:18px 26px;border-radius:14px;font-weight:800;font-size:19px;text-decoration:none;border:2px solid transparent;cursor:pointer;line-height:1.2;word-break:keep-all}
 .btn svg{flex:none}
 .btn-white{background:#fff;color:#1D3838;border-color:#fff}
 .btn-ghost{background:transparent;color:var(--hero-fg);border-color:rgba(255,255,255,.55)}
 .btn-brand{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
-.btn-outline{background:var(--card);color:var(--brand);border-color:var(--brand)}
 .btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.hero-note{font-size:15px;color:var(--hero-muted);max-width:62ch}
+.hero-note{font-size:17px;color:var(--hero-muted);max-width:40ch}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--hero-fg)}
+.chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:9px 16px;font-size:16px;color:var(--hero-fg);font-weight:600}
 
 /* stepper */
-.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-28px;position:relative}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;box-shadow:var(--shadow);text-decoration:none;color:var(--fg)}
-.step .n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:800;align-items:center;justify-content:center;font-size:15px;margin-bottom:8px}
-.step b{display:block;font-size:16px;margin-bottom:2px}
-.step span{font-size:14px;color:var(--muted)}
+.stepper{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-30px;position:relative}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow);text-decoration:none;color:var(--fg)}
+.step .n{display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:800;align-items:center;justify-content:center;font-size:16px;margin-bottom:8px}
+.step b{display:block;font-size:18px}
+.step span{font-size:15px;color:var(--muted)}
 
 /* callout */
-.callout{display:grid;grid-template-columns:auto 1fr;gap:14px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:14px;padding:18px 20px;color:var(--fg)}
-.callout .ic{width:40px;height:40px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none}
+.callout{display:grid;grid-template-columns:auto 1fr;gap:16px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:16px;padding:22px 24px;color:var(--fg)}
 .callout > div{min-width:0}
-.callout b{display:block;font-size:17px;margin-bottom:4px}
-.callout ul{margin:6px 0 0;padding-left:18px}
-.callout li{margin:2px 0}
+.callout .ic{width:44px;height:44px;border-radius:12px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none}
+.callout b{display:block;font-size:21px;margin-bottom:6px}
+.callout li{font-size:18px}
 
-/* must cards */
-.must{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-.mcard{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--brand);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.mcard .head{display:flex;align-items:center;gap:12px}
-.mcard .ic{width:46px;height:46px;border-radius:12px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;flex:none}
-.badge{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.04em;border-radius:6px;padding:3px 8px}
+/* grids */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
+.soft{background:var(--brand-soft);border:0}
+.card .ic{width:48px;height:48px;border-radius:12px;background:var(--brand-soft);display:flex;align-items:center;justify-content:center;margin-bottom:12px;color:var(--brand)}
+.soft .ic{background:var(--card)}
+.card h3{margin-bottom:8px}
+.card p,.card li{font-size:17px;color:var(--muted)}
+.badge{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.04em;border-radius:6px;padding:4px 9px;margin-bottom:8px}
 .badge-must{background:var(--accent);color:#fff}
 .badge-if{background:var(--brand-soft);color:var(--brand)}
-.mcard h3{font-size:21px}
-.kv{display:grid;grid-template-columns:62px 1fr;gap:6px 10px;font-size:15px}
-.kv dt{color:var(--muted);font-weight:700}
-.kv dd{margin:0}
-.mcard .btn{margin-top:auto;justify-content:center;font-size:15px;padding:12px 16px}
-.also{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.acard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
-.acard h3{font-size:17px;margin:8px 0 6px}
-.acard p{font-size:14.5px;color:var(--muted)}
-
-/* prep */
-.prep{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.pcard{background:var(--brand-soft);border-radius:14px;padding:18px;min-width:0}
-.pcard b{display:block;font-size:17px;margin:8px 0 4px}
-.pcard p{font-size:14.5px;color:var(--muted)}
+.mcard{border-top:6px solid var(--brand);display:flex;flex-direction:column;gap:10px}
+.mcard .kv{display:grid;grid-template-columns:52px 1fr;gap:6px 10px;font-size:17px}
+.mcard .kv dt{color:var(--brand);font-weight:800}
+.mcard .kv dd{margin:0;color:var(--fg)}
+.mcard .btn{margin-top:auto;justify-content:center;font-size:17px;padding:14px 16px}
 
 /* checklist */
-.check{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow)}
-.check .bar{height:10px;background:var(--brand-soft);border-radius:999px;overflow:hidden;margin:10px 0 18px}
+.check{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:var(--shadow)}
+.check .bar{height:12px;background:var(--brand-soft);border-radius:999px;overflow:hidden;margin:10px 0 16px}
 .check .bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
-.check label{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;padding:12px 0;border-top:1px solid var(--line);cursor:pointer}
+.check label{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line);cursor:pointer}
 .check label:first-of-type{border-top:0}
-.check input{width:22px;height:22px;margin:2px 0 0;accent-color:var(--ok)}
-.check label b{display:block;font-size:16px}
-.check label span{font-size:14px;color:var(--muted)}
+.check input{width:24px;height:24px;margin:3px 0 0;accent-color:var(--ok)}
+.check label b{display:block;font-size:19px}
+.check label span{font-size:16px;color:var(--muted)}
 .check .done{color:var(--ok);font-weight:800}
-.check small{display:block;color:var(--muted);margin-top:10px;font-size:13px}
 
 /* paths */
-.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.path{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
-.path .tag{font-size:13px;font-weight:800;color:var(--brand);letter-spacing:.06em}
-.path h3{margin:6px 0 12px;font-size:21px}
-.path ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.path .tag{font-size:14px;font-weight:800;color:var(--brand);letter-spacing:.05em}
+.path h3{margin:6px 0 12px}
+.path ol{margin:0;padding-left:24px;display:grid;gap:8px;font-size:18px}
 .path li::marker{font-weight:800;color:var(--brand)}
-.path .copy{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px;font-size:15px}
-.copy code{background:var(--brand-soft);padding:6px 10px;border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:14px;user-select:all}
-.copybtn{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;font-family:var(--font)}
+.copy{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:17px}
+.copy code{background:var(--brand-soft);padding:8px 12px;border-radius:8px;font-family:ui-monospace,Consolas,monospace;font-size:16px;user-select:all}
+.copybtn{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:8px;padding:8px 12px;font-size:15px;cursor:pointer;font-family:var(--font)}
 .copybtn:focus-visible{outline:3px solid var(--accent)}
 figure{margin:0}
-figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+figcaption{font-size:15px;color:var(--muted);margin-top:8px}
 .shot{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-.note{background:var(--brand-soft);border-radius:12px;padding:14px 16px;font-size:15px;margin-top:16px}
 
 /* gallery */
-.gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.gallery figure{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0}
-.gallery .shot{margin-bottom:10px}
-.gallery b{display:block;margin-bottom:4px}
-.gallery .n{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:800;align-items:center;justify-content:center;font-size:13px;margin-right:6px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.gallery figure{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;min-width:0}
+.gallery .shot{margin-bottom:10px;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.gallery .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+.gallery b{display:block;font-size:17px}
+.gallery .n{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--brand);color:var(--brand-ink);font-weight:800;align-items:center;justify-content:center;font-size:14px;margin-right:6px}
 
 /* features */
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
-.fcard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:0;display:flex;flex-direction:column}
+.fcard{padding:0;overflow:hidden;display:flex;flex-direction:column}
 .fcard .shot{border:0;border-radius:0;border-bottom:1px solid var(--line);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#F2F5F4}
 .fcard .shot img{width:100%;height:100%;object-fit:cover;object-position:top}
 .fcard .shot.contain img{object-fit:contain;background:#fff}
-.fcard .body{padding:16px}
-.fcard h3{font-size:17px;margin-bottom:4px}
-.fcard p{font-size:14.5px;color:var(--muted)}
-.fcard a{font-size:14px;font-weight:700;text-decoration:none;display:inline-block;margin-top:8px}
+.fcard .body{padding:18px}
+.fcard h3{font-size:19px;margin-bottom:4px}
+.fcard a{font-size:16px;font-weight:800;text-decoration:none;display:inline-block;margin-top:8px}
 
-/* security */
-.sec{display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:center}
-.sec ul{margin:0;padding-left:18px;display:grid;gap:8px}
+/* profile */
+.profile{display:grid;grid-template-columns:200px 1fr;gap:26px;align-items:start}
+.avatar{width:200px;height:200px;border-radius:24px;background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.avatar b{font-size:40px;font-weight:900;letter-spacing:.02em}
+.avatar span{font-size:15px;color:var(--hero-muted)}
+.profile h3{font-size:26px}
+.profile .role{color:var(--muted);font-size:18px;margin:4px 0 14px}
+.profile li{font-size:18px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.pill{background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:7px 14px;font-size:15px;font-weight:700}
+
+/* price */
+.price .amt{font-size:34px;font-weight:900;color:var(--brand);margin:6px 0 2px;font-variant-numeric:tabular-nums}
+.price .amt small{font-size:17px;font-weight:700;color:var(--muted)}
+.price .per{font-size:15px;color:var(--muted);margin-bottom:12px}
+.price li{color:var(--fg)}
+.pnote{font-size:16px;color:var(--muted);margin-top:14px}
 
 /* faq */
-details{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 18px;margin-top:10px}
-summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 20px;margin-top:10px}
+summary{cursor:pointer;font-weight:800;font-size:18px;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:12px}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--brand);font-weight:900;font-size:20px;line-height:1}
+summary::after{content:"+";color:var(--brand);font-weight:900;font-size:22px;line-height:1}
 details[open] summary::after{content:"\2013"}
-details p{padding:0 0 14px;color:var(--muted)}
+details p{padding:0 0 16px;color:var(--muted);font-size:17px}
 
 /* contact */
-.contact{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:var(--hero-fg);border-radius:20px;padding:30px;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:center}
+.contact{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));color:var(--hero-fg);border-radius:22px;padding:34px;display:grid;grid-template-columns:1.2fr 1fr;gap:22px;align-items:center}
 .contact h2{color:var(--hero-fg)}
-.contact p{color:var(--hero-muted)}
-.contact .copy{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
-.contact code{background:rgba(255,255,255,.14);color:var(--hero-fg);padding:8px 12px;border-radius:8px;font-family:ui-monospace,Consolas,monospace;user-select:all}
+.contact p{color:var(--hero-muted);font-size:18px}
+.contact .copy code{background:rgba(255,255,255,.14);color:var(--hero-fg)}
 .contact .copybtn{background:transparent;color:var(--hero-fg);border-color:rgba(255,255,255,.5)}
-footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
-.divider{border:0;border-top:1px solid var(--line);margin:0}
+footer{padding:28px 0 44px;font-size:14px;color:var(--muted)}
 
 @media (max-width:860px){
-  .stepper{grid-template-columns:1fr 1fr;margin-top:-16px}
-  .must,.also,.prep,.features{grid-template-columns:1fr}
-  .paths,.gallery,.sec,.contact{grid-template-columns:1fr}
-  section{padding-block:40px}
+  .stepper{grid-template-columns:1fr 1fr;margin-top:-18px}
+  .grid3,.grid2,.gallery,.contact{grid-template-columns:1fr}
+  .profile{grid-template-columns:1fr}
+  .avatar{width:140px;height:140px}
+  section{padding-block:44px}
+  body{font-size:17px}
 }
 @media (prefers-reduced-motion: reduce){ .check .bar i{transition:none} }
 </style>
@@ -204,44 +207,42 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
 <header class="hero">
   <div class="wrap">
     <span class="eyebrow">진산회계법인 거래처 안내</span>
-    <h1>클로브 AI 연동, 한 번이면 자료 보내실 일이 사라집니다</h1>
-    <p class="lead">은행·카드·홈택스를 한 번 연결해 두시면 진산회계법인이 같은 자료로 기장과 신고를 진행합니다. 통장 엑셀과 카드 내역을 내려받아 보내는 일이 없어지고, 회사는 자금과 세금을 한 화면에서 봅니다. 이용료는 없습니다.</p>
+    <h1>클로브 AI 연동,<br>자료 보내실 일이 사라집니다</h1>
+    <p class="lead">은행·카드·홈택스를 한 번 연결하면 진산이 같은 자료로 기장과 신고를 합니다. 이용료는 없습니다.</p>
     <div class="cta">
       <a class="btn btn-white" href="https://app.clobe.ai/invitation-by-tax-agent?tax_agent_id=34flxDOv1mxGcD3xqD5yb&amp;referrerId=34flvgl8wkBfmHu5xmUUt&amp;utm_source=connect_invite&amp;utm_medium=referral&amp;utm_campaign=clobe-connect_request-landing&amp;utm_content=34flxDOv1mxGcD3xqD5yb" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
+        <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>
         진산회계법인과 연결하기
       </a>
       <a class="btn btn-ghost" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">이미 가입했다면 연동 화면 열기</a>
     </div>
-    <p class="hero-note">위 버튼은 진산회계법인 전용 초대 링크입니다. 누르면 "진산회계법인 여의도지점에서 보낸 초대장" 화면이 열리고 본인인증, 사업자 확인, 공동인증서 등록 세 단계로 연결까지 끝납니다. 이메일·알림톡 초대장을 받으셨다면 그 안의 버튼을 눌러도 같습니다. 이미 클로브 AI 를 쓰고 계시면 아래 "가입 방법 B"대로 세무대리인만 연결해 주십시오.</p>
+    <p class="hero-note">버튼을 누르면 본인인증, 사업자 확인, 공동인증서 등록 세 단계로 연결됩니다. 이메일·알림톡 초대장의 버튼도 같습니다.</p>
     <div class="chips">
       <span class="chip">이용료 0원</span>
-      <span class="chip">연동 소요 약 10분</span>
+      <span class="chip">연동 약 10분</span>
       <span class="chip">준비물: 공동인증서, 카드사 로그인</span>
-      <span class="chip">ISMS 정보보호 인증</span>
     </div>
   </div>
 </header>
 
 <div class="wrap">
   <nav class="stepper" aria-label="진행 순서">
-    <a class="step" href="#signup"><span class="n">1</span><b>가입</b><span>초대장 또는 직접 가입</span></a>
-    <a class="step" href="#signup"><span class="n">2</span><b>진산과 연결</b><span>세무대리인 탭에 진산 표시</span></a>
+    <a class="step" href="#signup"><span class="n">1</span><b>가입</b><span>위 버튼 한 번</span></a>
+    <a class="step" href="#signup"><span class="n">2</span><b>진산과 연결</b><span>세무대리인 탭 확인</span></a>
     <a class="step" href="#must"><span class="n">3</span><b>필수 연동 3가지</b><span>홈택스, 은행, 카드</span></a>
-    <a class="step" href="#checklist"><span class="n">4</span><b>연동 확인</b><span>체크리스트 6개</span></a>
+    <a class="step" href="#checklist"><span class="n">4</span><b>연동 확인</b><span>체크리스트</span></a>
   </nav>
 </div>
 
 <section id="why">
   <div class="wrap">
     <div class="callout">
-      <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 8v5M12 16.5v.5"/><path d="M10.3 3.9 2.6 17.3a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 8v5M12 16.5v.5"/><path d="M10.3 3.9 2.6 17.3a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
       <div>
-        <b>가입만 하고 연동을 안 하시면 달라지는 것이 없습니다</b>
-        <p>클로브 AI 는 연결된 기관에서 자료를 가져오는 서비스입니다. 연동이 비어 있으면 다음 일이 그대로 남습니다.</p>
+        <b>가입만 하고 연동을 안 하면 달라지는 것이 없습니다</b>
         <ul>
-          <li>진산이 통장 내역·카드 내역·세금계산서를 계속 요청드립니다.</li>
-          <li>연말 전 가결산과 예상 세금 안내를 드릴 수 없습니다.</li>
+          <li>통장·카드·세금계산서 자료 요청이 계속 옵니다.</li>
+          <li>연말 전 가결산과 예상 세금 안내를 받을 수 없습니다.</li>
           <li>자금일보와 손익 화면이 비어 있습니다.</li>
         </ul>
       </div>
@@ -252,22 +253,22 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
 <section id="prep" style="padding-top:0">
   <div class="wrap">
     <span class="eyebrow">시작 전에</span>
-    <h2>미리 준비해 두시면 10분에 끝납니다</h2>
-    <div class="prep" style="margin-top:18px">
-      <div class="pcard">
-        <svg width="34" height="34" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" style="color:var(--brand)"><rect x="5" y="6" width="34" height="26" rx="2"/><line x1="11" y1="14" x2="27" y2="14"/><line x1="11" y1="20" x2="22" y2="20"/><circle cx="31" cy="24" r="5"/><path d="M28 28l-2 11 5-3 5 3-2-11"/></svg>
-        <b>공동인증서와 비밀번호</b>
-        <p>홈택스 로그인에 쓰는 법인(사업자) 공동인증서입니다. 은행에도 같은 인증서가 등록돼 있으면 한 번에 둘 다 연결됩니다. 인증서 파일(.pfx) 위치를 알아 두십시오.</p>
+    <h2>미리 준비할 것 세 가지</h2>
+    <div class="grid3" style="margin-top:18px">
+      <div class="card soft">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><rect x="5" y="6" width="34" height="26" rx="2"/><line x1="11" y1="14" x2="27" y2="14"/><line x1="11" y1="20" x2="22" y2="20"/><circle cx="31" cy="24" r="5"/><path d="M28 28l-2 11 5-3 5 3-2-11"/></svg></div>
+        <h3>공동인증서와 비밀번호</h3>
+        <p>홈택스 로그인에 쓰는 인증서입니다. 은행에 같은 인증서가 등록돼 있으면 한 번에 연결됩니다.</p>
       </div>
-      <div class="pcard">
-        <svg width="34" height="34" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="color:var(--brand)"><circle cx="15" cy="22" r="8"/><line x1="22" y1="22" x2="40" y2="22"/><line x1="34" y1="22" x2="34" y2="29"/><line x1="39" y1="22" x2="39" y2="27"/></svg>
-        <b>카드사 홈페이지 아이디·비밀번호</b>
-        <p>법인카드를 쓰는 카드사마다 필요합니다. 신한카드·롯데카드 등 일부는 관리자 계정이어야 하고, 기업은행 카드는 BC카드로 연결합니다.</p>
+      <div class="card soft">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="15" cy="22" r="8"/><line x1="22" y1="22" x2="40" y2="22"/><line x1="34" y1="22" x2="34" y2="29"/><line x1="39" y1="22" x2="39" y2="27"/></svg></div>
+        <h3>카드사 홈페이지 로그인</h3>
+        <p>법인카드 카드사의 아이디·비밀번호입니다. 신한·롯데 등 일부는 관리자 계정이 필요합니다.</p>
       </div>
-      <div class="pcard">
-        <svg width="34" height="34" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" style="color:var(--brand)"><rect x="4" y="7" width="36" height="24" rx="2"/><line x1="16" y1="38" x2="28" y2="38"/><line x1="22" y1="31" x2="22" y2="38"/></svg>
-        <b>Windows PC</b>
-        <p>인증서 첫 등록은 Windows PC 에서 합니다. 그 뒤에는 Mac 과 휴대폰에서도 이용할 수 있습니다. 인증서와 비밀번호는 회사가 직접 입력하며 진산에 보내지 않습니다.</p>
+      <div class="card soft">
+        <div class="ic"><svg width="28" height="28" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"><rect x="4" y="7" width="36" height="24" rx="2"/><line x1="16" y1="38" x2="28" y2="38"/><line x1="22" y1="31" x2="22" y2="38"/></svg></div>
+        <h3>Windows PC</h3>
+        <p>인증서 첫 등록만 PC 에서 합니다. 인증서와 비밀번호는 진산에 보내지 않습니다.</p>
       </div>
     </div>
   </div>
@@ -277,54 +278,44 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <span class="eyebrow">꼭 연동해야 하는 것</span>
     <h2>이 세 가지는 반드시 연결해 주십시오</h2>
-    <p class="sub">세 곳이 연결돼야 기장과 신고가 자료 요청 없이 돌아갑니다. 순서대로 진행하시면 됩니다. 버튼을 누르면 클로브 AI 연동 화면이 새 창으로 열립니다.</p>
-    <div class="must">
-      <article class="mcard">
-        <div class="head">
-          <div class="ic"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" style="color:var(--brand)"><path d="M10 4h16l8 8v28H10z"/><path d="M26 4v8h8"/><line x1="15" y1="20" x2="29" y2="20"/><line x1="15" y1="26" x2="29" y2="26"/><line x1="15" y1="32" x2="24" y2="32"/></svg></div>
-          <div><span class="badge badge-must">필수 1</span><h3>홈택스</h3></div>
-        </div>
+    <p class="sub">세 곳이 연결돼야 자료 요청 없이 기장과 신고가 됩니다.</p>
+    <div class="grid3" style="margin-top:22px">
+      <article class="card mcard">
+        <span class="badge badge-must">필수 1</span>
+        <h3>홈택스</h3>
         <dl class="kv">
-          <dt>왜</dt><dd>세금계산서, 현금영수증, 신고·납부 내역의 원천입니다. 매출·매입 자료가 여기서 옵니다.</dd>
-          <dt>준비</dt><dd>홈택스 로그인용 공동인증서와 비밀번호</dd>
-          <dt>방법</dt><dd>연동 화면의 홈택스 영역에서 "연동하기"를 누르고 인증서를 고른 뒤 비밀번호를 입력합니다.</dd>
-          <dt>안 하면</dt><dd>매출·매입 집계와 신고서·납부서 표시가 되지 않습니다.</dd>
+          <dt>왜</dt><dd>세금계산서·현금영수증·신고 내역이 여기서 옵니다.</dd>
+          <dt>준비</dt><dd>공동인증서와 비밀번호</dd>
+          <dt>방법</dt><dd>홈택스 영역 "연동하기"에서 인증서 선택</dd>
         </dl>
-        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">홈택스 연동 화면 열기</a>
+        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">홈택스 연동하기</a>
       </article>
-      <article class="mcard">
-        <div class="head">
-          <div class="ic"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" style="color:var(--brand)"><polygon points="22,5 40,15 4,15"/><rect x="8" y="17" width="4" height="15"/><rect x="20" y="17" width="4" height="15"/><rect x="32" y="17" width="4" height="15"/><rect x="4" y="34" width="36" height="5"/></svg></div>
-          <div><span class="badge badge-must">필수 2</span><h3>은행</h3></div>
-        </div>
+      <article class="card mcard">
+        <span class="badge badge-must">필수 2</span>
+        <h3>은행</h3>
         <dl class="kv">
           <dt>왜</dt><dd>통장 입출금이 기장과 자금일보의 기준입니다.</dd>
-          <dt>준비</dt><dd>은행에 등록된 공동인증서. 홈택스와 같은 인증서면 한 번에 연결됩니다.</dd>
-          <dt>범위</dt><dd>사업용 계좌 전부. 법인은 모든 법인 계좌를 연결합니다. 나중에 만든 계좌는 "기관 갱신"으로 붙입니다.</dd>
-          <dt>안 하면</dt><dd>통장 엑셀을 계속 내려받아 보내셔야 합니다.</dd>
+          <dt>준비</dt><dd>은행에 등록된 공동인증서</dd>
+          <dt>범위</dt><dd>사업용 계좌 전부. 새 계좌는 "기관 갱신"</dd>
         </dl>
-        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">은행 연동 화면 열기</a>
+        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">은행 연동하기</a>
       </article>
-      <article class="mcard">
-        <div class="head">
-          <div class="ic"><svg width="26" height="26" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--brand)"><rect x="4" y="10" width="36" height="24" rx="3"/><rect x="4" y="16" width="36" height="5" fill="currentColor" stroke="none"/><rect x="9" y="26" width="10" height="3" fill="currentColor" stroke="none"/></svg></div>
-          <div><span class="badge badge-must">필수 3</span><h3>카드</h3></div>
-        </div>
+      <article class="card mcard">
+        <span class="badge badge-must">필수 3</span>
+        <h3>카드</h3>
         <dl class="kv">
           <dt>왜</dt><dd>비용 증빙의 대부분이 카드 내역입니다.</dd>
-          <dt>준비</dt><dd>카드사 홈페이지 아이디·비밀번호 또는 공동인증서</dd>
-          <dt>범위</dt><dd>체크카드를 포함한 법인카드 전부. 카드사가 여럿이면 카드사마다 연결합니다.</dd>
-          <dt>안 하면</dt><dd>카드 내역 요청이 매달 계속됩니다.</dd>
+          <dt>준비</dt><dd>카드사 아이디·비밀번호</dd>
+          <dt>범위</dt><dd>체크카드 포함 법인카드 전부</dd>
         </dl>
-        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">카드 연동 화면 열기</a>
+        <a class="btn btn-brand" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">카드 연동하기</a>
       </article>
     </div>
-
-    <h3 style="margin-top:34px">해당되는 회사만 추가로 연결합니다</h3>
-    <div class="also">
-      <div class="acard"><span class="badge badge-if">온라인 판매</span><h3>PG · 판매채널</h3><p>스마트스토어, 쿠팡, 배달앱, 토스페이먼츠 같은 결제대행과 판매채널 계정을 연결합니다. 정산 자료가 자동으로 들어와 매출 누락 확인이 쉬워집니다.</p></div>
-      <div class="acard"><span class="badge badge-if">증권계좌 보유</span><h3>증권</h3><p>증권사 계좌가 있으면 잔액과 보유 종목이 함께 수집됩니다. 결산 때 평가 자료를 따로 보내지 않아도 됩니다.</p></div>
-      <div class="acard"><span class="badge badge-if">급여를 진산에 맡기는 경우</span><h3>급여 · 인사</h3><p>"세무 관리" 메뉴의 잠긴 항목에서 세무담당자 권한을 설정하고 "급여 · 인사"에 사원과 급여대장을 등록합니다. 급여명세서 발송까지 클로브에서 됩니다.</p></div>
+    <h3 style="margin-top:36px">해당되는 회사만 추가</h3>
+    <div class="grid3" style="margin-top:12px">
+      <div class="card"><span class="badge badge-if">온라인 판매</span><h3>PG · 판매채널</h3><p>스마트스토어, 쿠팡, 배달앱, 결제대행 정산이 자동으로 들어옵니다.</p></div>
+      <div class="card"><span class="badge badge-if">증권계좌 보유</span><h3>증권</h3><p>잔액과 보유 종목이 함께 수집됩니다.</p></div>
+      <div class="card"><span class="badge badge-if">급여를 진산에 맡기는 경우</span><h3>급여 · 인사</h3><p>세무담당자 권한을 켜고 사원과 급여대장을 등록합니다.</p></div>
     </div>
   </div>
 </section>
@@ -332,18 +323,16 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
 <section id="checklist">
   <div class="wrap">
     <span class="eyebrow">연동 확인</span>
-    <h2>다 됐는지 여기서 확인해 보십시오</h2>
-    <p class="sub">여섯 가지가 모두 체크되면 진산 쪽에서도 자료가 보입니다. 체크 표시는 이 기기에서만 저장됩니다.</p>
+    <h2>다 됐는지 여기서 확인하세요</h2>
     <div class="check" style="margin-top:18px">
-      <div><b id="chk-progress" style="font-size:18px">0 / 6 완료</b></div>
+      <div><b id="chk-progress" style="font-size:20px">0 / 6 완료</b></div>
       <div class="bar"><i id="chk-bar"></i></div>
-      <label><input type="checkbox" id="chk-1"><span><b>홈택스 연동 완료</b><span>연동 화면 "인증서" 탭에 홈택스가 연결됨으로 보입니다.</span></span></label>
-      <label><input type="checkbox" id="chk-2"><span><b>은행: 사업용 계좌가 전부 보임</b><span>은행 영역을 펼쳐 계좌 목록을 확인합니다. 빠진 계좌는 "기관 갱신"을 누릅니다.</span></span></label>
-      <label><input type="checkbox" id="chk-3"><span><b>카드: 체크카드 포함 전부 연결</b><span>카드사마다 연결됐는지, 법인카드 목록에 빠진 카드가 없는지 확인합니다.</span></span></label>
-      <label><input type="checkbox" id="chk-4"><span><b>세무대리인 탭에 진산회계법인 표시</b><span>"세무 관리" → "세무 현황" → "세무 정보 관리" → "세무대리인" 탭에 진산회계법인과 담당자가 보입니다.</span></span></label>
-      <label><input type="checkbox" id="chk-5"><span><b>자금일보 받을 사람 설정</b><span>"알림"에서 자금일보 수신을 켜고 받을 항목을 고릅니다. 대표와 경리 담당자를 함께 넣을 수 있습니다.</span></span></label>
-      <label><input type="checkbox" id="chk-6"><span><b>해당 시: PG·판매채널, 증권, 급여대장</b><span>온라인 판매 회사는 판매채널, 증권계좌가 있으면 증권, 급여를 맡기면 급여대장까지 등록합니다. 해당이 없으면 그냥 체크하십시오.</span></span></label>
-      <small>연동이 끝나면 담당자가 연결 상태를 확인하고 연락드립니다. 막히는 단계가 있으면 화면을 캡처해 담당자에게 보내 주십시오.</small>
+      <label><input type="checkbox" id="chk-1"><span><b>홈택스 연동 완료</b><span>"인증서" 탭에 홈택스가 보입니다.</span></span></label>
+      <label><input type="checkbox" id="chk-2"><span><b>은행 계좌 전부 보임</b><span>빠진 계좌는 "기관 갱신"을 누릅니다.</span></span></label>
+      <label><input type="checkbox" id="chk-3"><span><b>카드 전부 연결</b><span>체크카드까지 포함합니다.</span></span></label>
+      <label><input type="checkbox" id="chk-4"><span><b>세무대리인 탭에 진산회계법인 표시</b><span>세무 관리 → 세무 현황 → 세무 정보 관리</span></span></label>
+      <label><input type="checkbox" id="chk-5"><span><b>자금일보 받을 사람 설정</b><span>"알림"에서 수신을 켭니다.</span></span></label>
+      <label><input type="checkbox" id="chk-6"><span><b>해당 시: PG·판매채널, 증권, 급여대장</b><span>해당이 없으면 그냥 체크합니다.</span></span></label>
     </div>
   </div>
 </section>
@@ -351,33 +340,30 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
 <section id="signup" style="background:var(--brand-soft)">
   <div class="wrap">
     <span class="eyebrow">가입 방법</span>
-    <h2>두 가지 길 중 하나로 진산과 연결됩니다</h2>
-    <div class="paths">
-      <article class="path">
-        <span class="tag">A. 초대 링크로 새로 가입하는 경우 (권장)</span>
-        <h3>버튼 한 번으로 가입과 연결까지 끝납니다</h3>
+    <h2>두 가지 길 중 하나입니다</h2>
+    <div class="grid2" style="margin-top:22px">
+      <article class="card path">
+        <span class="tag">A. 새로 가입 (권장)</span>
+        <h3>버튼 한 번으로 가입과 연결이 끝납니다</h3>
         <ol>
-          <li>이 페이지의 "진산회계법인과 연결하기" 버튼을 누르거나, 진산이 보낸 이메일·카카오톡 알림톡 초대장의 링크를 엽니다.</li>
-          <li>화면 위쪽 "진산회계법인에서 보낸 초대장이에요"를 확인하고 "진산회계법인과 연결하기"를 누릅니다.</li>
-          <li>"인증서 연결하고 시작하기"를 누릅니다. PC 는 인증서를 먼저, 휴대폰은 비밀번호 설정이나 본인인증을 먼저 하고 PC 에서 인증서를 이어 등록합니다.</li>
-          <li>왼쪽 메뉴 "연동"에서 "연동 시작하기"를 눌러 위의 필수 3가지를 연결합니다.</li>
+          <li>"진산회계법인과 연결하기" 버튼을 누릅니다.</li>
+          <li>본인인증, 사업자 확인, 공동인증서 등록을 마칩니다.</li>
+          <li>왼쪽 메뉴 "연동"에서 필수 3가지를 연결합니다.</li>
         </ol>
         <a class="btn btn-brand" style="margin-top:16px" href="https://app.clobe.ai/invitation-by-tax-agent?tax_agent_id=34flxDOv1mxGcD3xqD5yb&amp;referrerId=34flvgl8wkBfmHu5xmUUt&amp;utm_source=connect_invite&amp;utm_medium=referral&amp;utm_campaign=clobe-connect_request-landing&amp;utm_content=34flxDOv1mxGcD3xqD5yb" target="_blank" rel="noopener">진산회계법인과 연결하기</a>
-        <figure style="margin-top:16px"><div class="shot"><img src="img/invite_landing.jpg" alt="초대 링크를 열면 보이는 환영 화면" loading="lazy"></div><figcaption>초대 링크를 열면 보이는 화면. 사무소 이름이 진산회계법인 여의도지점인지 확인합니다.</figcaption></figure>
-        <div class="note">이 링크는 만료되지 않습니다. 이메일이나 알림톡으로 초대장을 받고 싶으시면 담당자에게 말씀해 주십시오. 바로 보내 드립니다.</div>
+        <figure style="margin-top:16px"><div class="shot"><img src="img/invite_landing.jpg" alt="초대 링크를 열면 보이는 화면" loading="lazy"></div><figcaption>버튼을 누르면 보이는 화면입니다.</figcaption></figure>
       </article>
-      <article class="path">
-        <span class="tag">B. 이미 클로브 AI 에 가입돼 있는 경우</span>
+      <article class="card path">
+        <span class="tag">B. 이미 클로브 AI 를 쓰는 회사</span>
         <h3>세무대리인 초대 화면에서 진산을 연결합니다</h3>
         <ol>
-          <li><a href="https://app.clobe.ai/auth/signin" target="_blank" rel="noopener">app.clobe.ai</a>에 기존 계정으로 로그인합니다. 새로 가입하시는 분은 A 를 이용하십시오.</li>
-          <li>왼쪽 메뉴 "세무 관리" → <a href="https://app.clobe.ai/clobe/tax-agency/invite" target="_blank" rel="noopener">"세무대리인 초대"</a> 화면을 엽니다.</li>
-          <li>"이메일·SMS 초대"에 아래 담당자 이메일을 넣고 "초대하기"를 누릅니다. 홈택스 수임 관계가 있으면 "나의 세무대리인 정보"에 진산 연락처가 자동으로 뜹니다.</li>
-          <li>진산이 수락하면 "세무 정보 관리" → "세무대리인" 탭에 진산회계법인이 표시됩니다. 그다음 필수 3가지를 연동합니다.</li>
+          <li><a href="https://app.clobe.ai/auth/signin" target="_blank" rel="noopener">app.clobe.ai</a>에 로그인합니다.</li>
+          <li>"세무 관리" → <a href="https://app.clobe.ai/clobe/tax-agency/invite" target="_blank" rel="noopener">"세무대리인 초대"</a>를 엽니다.</li>
+          <li>이메일 초대에 아래 주소를 넣고 "초대하기"를 누릅니다.</li>
+          <li>진산이 수락하면 "세무대리인" 탭에 진산회계법인이 보입니다.</li>
         </ol>
-        <div class="copy"><span>담당자 이메일</span><code id="mail-1">1stdaeun@lighttax.biz</code><button class="copybtn" type="button" data-copy="mail-1">복사</button></div>
-        <figure style="margin-top:16px"><div class="shot"><img src="img/taxagent_tab.png" alt="세무 정보 관리의 세무대리인 탭" loading="lazy"></div><figcaption>연결이 끝나면 세무대리인 탭에 사무소와 담당자가 보입니다(예시 데이터).</figcaption></figure>
-        <div class="note">이미 클로브 AI 를 쓰고 계신 회사는 중복 가입 전에 담당자에게 알려 주십시오. 기존 계정의 연결 상태를 확인해 드립니다.</div>
+        <div class="copy"><code id="mail-1">1stdaeun@lighttax.biz</code><button class="copybtn" type="button" data-copy="mail-1">복사</button></div>
+        <figure style="margin-top:16px"><div class="shot"><img src="img/taxagent_tab.png" alt="세무 정보 관리의 세무대리인 탭" loading="lazy"></div><figcaption>연결되면 이렇게 보입니다(예시 데이터).</figcaption></figure>
       </article>
     </div>
   </div>
@@ -385,65 +371,119 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
 
 <section id="howto">
   <div class="wrap">
-    <span class="eyebrow">연동 화면 따라하기</span>
+    <span class="eyebrow">연동 화면</span>
     <h2>화면은 이렇게 생겼습니다</h2>
-    <p class="sub">왼쪽 메뉴의 "연동"에서 "연동 시작하기"를 누르고 홈택스, 은행, 카드, PG·판매채널 순서로 연결합니다. 모든 화면은 클로브 공식 안내의 데모 데이터입니다.</p>
+    <p class="sub">"연동" → "연동 시작하기" → 홈택스, 은행, 카드 순서입니다.</p>
     <div class="gallery">
-      <figure><div class="shot"><img src="img/yeondong_start.jpg" alt="연동 시작하기 화면" loading="lazy"></div><b><span class="n">1</span>연동 시작하기</b><figcaption>왼쪽 메뉴 "연동"을 누르면 보이는 첫 화면입니다. "연동 시작하기"를 누릅니다.</figcaption></figure>
-      <figure><div class="shot"><img src="img/yeondong_modal.jpg" alt="공동인증서로 은행·홈택스 연동하기 창" loading="lazy"></div><b><span class="n">2</span>인증서 고르고 비밀번호 입력</b><figcaption>은행과 홈택스는 같은 창에서 공동인증서로 연결합니다. 인증서가 목록에 없으면 "직접 찾기"로 .pfx 파일을 올립니다.</figcaption></figure>
-      <figure><div class="shot"><img src="img/org_auth.png" alt="인증서 선택 화면" loading="lazy"></div><b><span class="n">3</span>인증서 위치 선택</b><figcaption>PC 에 저장된 인증서, 이동식 디스크, 직접 입력 중에서 고릅니다.</figcaption></figure>
-      <figure><div class="shot"><img src="img/org_select.png" alt="은행 연결 뒤 계좌 목록" loading="lazy"></div><b><span class="n">4</span>계좌 목록 확인</b><figcaption>은행이 연결되면 계좌별 수집 상태가 보입니다. 사업용 계좌가 빠졌으면 "기관 갱신"을 누릅니다.</figcaption></figure>
-      <figure><div class="shot"><img src="img/org_platform.png" alt="PG·마켓플레이스 연결 화면" loading="lazy"></div><b><span class="n">5</span>PG · 판매채널 (해당 시)</b><figcaption>네이버페이 등 일부 채널은 QR 코드로 연동합니다. 온라인 판매 회사만 해당합니다.</figcaption></figure>
-      <figure><div class="shot"><img src="img/cert_tab.png" alt="인증서 탭" loading="lazy"></div><b><span class="n">6</span>인증서 탭에서 최종 확인</b><figcaption>등록한 인증서와 연결된 기관이 한 줄씩 보이면 완료입니다. 체크리스트로 돌아가 확인 표시를 해 주십시오.</figcaption></figure>
+      <figure><div class="shot"><img src="img/yeondong_start.jpg" alt="연동 시작하기 화면" loading="lazy"></div><b><span class="n">1</span>연동 시작하기</b><figcaption>왼쪽 메뉴 "연동"의 첫 화면</figcaption></figure>
+      <figure><div class="shot"><img src="img/yeondong_modal.jpg" alt="공동인증서 연동 창" loading="lazy"></div><b><span class="n">2</span>인증서 선택</b><figcaption>은행과 홈택스는 같은 창에서</figcaption></figure>
+      <figure><div class="shot"><img src="img/org_auth.png" alt="인증서 위치 선택" loading="lazy"></div><b><span class="n">3</span>인증서 위치</b><figcaption>PC, 이동식 디스크, 직접 찾기</figcaption></figure>
+      <figure><div class="shot"><img src="img/org_select.png" alt="계좌 목록" loading="lazy"></div><b><span class="n">4</span>계좌 목록 확인</b><figcaption>빠진 계좌는 "기관 갱신"</figcaption></figure>
+      <figure><div class="shot"><img src="img/org_platform.png" alt="PG·판매채널 연결" loading="lazy"></div><b><span class="n">5</span>PG · 판매채널</b><figcaption>온라인 판매 회사만</figcaption></figure>
+      <figure><div class="shot"><img src="img/cert_tab.png" alt="인증서 탭" loading="lazy"></div><b><span class="n">6</span>인증서 탭</b><figcaption>연결된 기관이 보이면 완료</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section id="benefit" style="background:var(--brand-soft)">
   <div class="wrap">
-    <span class="eyebrow">연동하면 바로 보이는 것</span>
-    <h2>연결한 다음 날부터 이 화면들이 채워집니다</h2>
-    <figure style="margin-top:18px"><div class="shot"><img src="img/flow.png" alt="은행·카드·홈택스·판매채널 자료가 클로브로 모여 회사와 진산이 같이 보는 흐름" loading="lazy"></div></figure>
-    <div class="features">
-      <article class="fcard"><div class="shot contain"><img src="img/daily_kakao.png" alt="카카오톡으로 받는 자금일보" loading="lazy"></div><div class="body"><h3>매일 아침 자금일보</h3><p>전 계좌 잔액, 전날 입출금, 카드 사용액이 카카오톡이나 이메일로 옵니다.</p><a href="https://app.clobe.ai/clobe/notifications" target="_blank" rel="noopener">자금일보 설정 열기</a></div></article>
-      <article class="fcard"><div class="shot"><img src="img/home_funds.png" alt="홈의 가용 자금 화면" loading="lazy"></div><div class="body"><h3>자금 현황 한 화면</h3><p>입출금·외화·예적금 계좌와 카드 이용액을 한 번에 봅니다.</p><a href="https://app.clobe.ai/clobe/cash-status" target="_blank" rel="noopener">자금 현황 열기</a></div></article>
-      <article class="fcard"><div class="shot"><img src="img/invoice_write.png" alt="세금계산서 발급 화면" loading="lazy"></div><div class="body"><h3>세금계산서 발급과 미수 확인</h3><p>홈택스 접속 없이 발급하고, 입금을 연결하면 못 받은 돈이 자동으로 남습니다.</p><a href="https://app.clobe.ai/clobe/tax-invoice/settlement" target="_blank" rel="noopener">세금계산서 정산 열기</a></div></article>
-      <article class="fcard"><div class="shot"><img src="img/tax_status.jpg" alt="세무 현황 화면" loading="lazy"></div><div class="body"><h3>신고 진행과 납부서</h3><p>진산이 신고한 세목별 진행 단계, 신고서, 납부서, 납부 기한이 표시됩니다.</p><a href="https://app.clobe.ai/clobe/tax-agency/home" target="_blank" rel="noopener">세무 현황 열기</a></div></article>
-      <article class="fcard"><div class="shot"><img src="img/est_vat.png" alt="예상 부가세 요약" loading="lazy"></div><div class="body"><h3>예상 부가세</h3><p>신고 전에 매출·매입 합계와 예상 세액을 미리 봅니다.</p><a href="https://app.clobe.ai/clobe/estimated-vat" target="_blank" rel="noopener">예상 부가세 열기</a></div></article>
-      <article class="fcard"><div class="shot"><img src="img/pnl_report.jpg" alt="월별 손익 리포트" loading="lazy"></div><div class="body"><h3>결산 전 손익</h3><p>이번 달 매출·비용·이익이 자동 집계됩니다. 확정 재무제표는 진산 결산 뒤 숫자가 기준입니다.</p><a href="https://app.clobe.ai/clobe/pnl" target="_blank" rel="noopener">손익계산서 열기</a></div></article>
+    <span class="eyebrow">연동하면</span>
+    <h2>다음 날부터 이 화면이 채워집니다</h2>
+    <div class="grid3" style="margin-top:22px">
+      <article class="card fcard"><div class="shot contain"><img src="img/daily_kakao.png" alt="자금일보" loading="lazy"></div><div class="body"><h3>매일 아침 자금일보</h3><p>잔액, 입출금, 카드 사용액이 카톡으로 옵니다.</p><a href="https://app.clobe.ai/clobe/notifications" target="_blank" rel="noopener">설정 열기</a></div></article>
+      <article class="card fcard"><div class="shot"><img src="img/home_funds.png" alt="자금 현황" loading="lazy"></div><div class="body"><h3>자금 현황 한 화면</h3><p>계좌와 카드를 한 번에 봅니다.</p><a href="https://app.clobe.ai/clobe/cash-status" target="_blank" rel="noopener">자금 현황 열기</a></div></article>
+      <article class="card fcard"><div class="shot"><img src="img/invoice_write.png" alt="세금계산서 발급" loading="lazy"></div><div class="body"><h3>세금계산서 발급과 미수 확인</h3><p>홈택스 없이 발급하고 못 받은 돈을 봅니다.</p><a href="https://app.clobe.ai/clobe/tax-invoice/settlement" target="_blank" rel="noopener">정산 화면 열기</a></div></article>
+      <article class="card fcard"><div class="shot"><img src="img/tax_status.jpg" alt="세무 현황" loading="lazy"></div><div class="body"><h3>신고 진행과 납부서</h3><p>신고 단계, 신고서, 납부 기한이 보입니다.</p><a href="https://app.clobe.ai/clobe/tax-agency/home" target="_blank" rel="noopener">세무 현황 열기</a></div></article>
+      <article class="card fcard"><div class="shot"><img src="img/est_vat.png" alt="예상 부가세" loading="lazy"></div><div class="body"><h3>예상 부가세</h3><p>신고 전에 예상 세액을 미리 봅니다.</p><a href="https://app.clobe.ai/clobe/estimated-vat" target="_blank" rel="noopener">예상 부가세 열기</a></div></article>
+      <article class="card fcard"><div class="shot"><img src="img/pnl_report.jpg" alt="손익 리포트" loading="lazy"></div><div class="body"><h3>결산 전 손익</h3><p>이번 달 매출·비용·이익이 자동 집계됩니다.</p><a href="https://app.clobe.ai/clobe/pnl" target="_blank" rel="noopener">손익계산서 열기</a></div></article>
     </div>
-    <figure style="margin-top:22px"><div class="shot"><img src="img/roles.png" alt="회사와 진산회계법인이 각각 하는 일" loading="lazy"></div></figure>
+    <figure style="margin-top:22px"><div class="shot"><img src="img/flow.png" alt="자료가 클로브로 모여 회사와 진산이 같이 보는 흐름" loading="lazy"></div></figure>
   </div>
 </section>
 
-<section id="security">
-  <div class="wrap sec">
-    <div>
-      <span class="eyebrow">보안</span>
-      <h2>인증서는 회사 화면에만 남습니다</h2>
-      <ul style="margin-top:14px">
-        <li>인증서와 비밀번호는 회사가 클로브 연동 화면에 직접 입력합니다. 진산회계법인은 받지 않습니다.</li>
-        <li>클로브 AI 와 클로브커넥트는 2026년 5월 ISMS 정보보호 인증을 받았습니다.</li>
-        <li>연동 자체는 조회용입니다. 급여이체·일반이체 기능은 국민은행·하나은행 법인 계좌에만 있고, 회사 관리자가 권한을 준 사람이 은행 인증을 거쳐야 실행됩니다. 진산은 이체 권한이 없습니다.</li>
-        <li>세무 정보는 구성원마다 2차 비밀번호를 따로 설정해 엽니다. 구성원별로 권한을 나눌 수 있습니다.</li>
-      </ul>
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">담당 회계사</span>
+    <h2>누가 맡는지 먼저 소개합니다</h2>
+    <div class="profile" style="margin-top:22px">
+      <div class="avatar"><b>김다은</b><span>공인회계사 KICPA</span></div>
+      <div>
+        <h3>김다은 공인회계사</h3>
+        <p class="role">진산회계법인 이사(Partner), 여의도지점 기장·세무 총괄</p>
+        <ul>
+          <li>PwC 삼일회계법인 Tax 본부, 회계법인 공명 세무팀장을 거쳐 진산회계법인에 합류했습니다.</li>
+          <li>서울시립대학교 세무학과를 졸업했습니다.</li>
+          <li>매년 30여 개 회사의 법인세 세무조정을 맡고 있습니다. 대기업 그룹사 조정 경험이 있습니다.</li>
+          <li>경정청구로 법인세·지방세·종부세를 돌려받은 사례가 여러 건입니다. 한 건에 15억원을 환급받은 적도 있습니다.</li>
+          <li>세무조사 대응, 상속·증여세 신고, 합병·분할 같은 자본거래 세무 검토를 해 왔습니다.</li>
+        </ul>
+        <div class="pills"><span class="pill">법인세·종합소득세</span><span class="pill">부가세·원천세</span><span class="pill">경정청구</span><span class="pill">세무조사 대응</span><span class="pill">상속·증여</span><span class="pill">M&amp;A 세무</span></div>
+      </div>
     </div>
-    <figure><div class="shot"><img src="img/isms.png" alt="클로브 ISMS 정보보호 인증 안내" loading="lazy"></div><figcaption>인증 범위는 클로브 AI·커넥트 서비스 운영, 유효기간 2026년 5월 20일부터 2029년 5월 19일까지입니다.</figcaption></figure>
+    <div class="card" style="margin-top:22px">
+      <h3>진산회계법인</h3>
+      <p>2022년 설립, 공인회계사 28명(2025년 8월 기준). 본점 강남, 여의도지점은 국제금융로 106 한진빌딩 306호입니다. 회계감사, 세무, 실사·가치평가, 재무자문을 합니다.</p>
+    </div>
   </div>
 </section>
 
-<section id="faq" style="padding-top:0">
+<section id="price" style="background:var(--brand-soft)">
+  <div class="wrap">
+    <span class="eyebrow">기장 가격표</span>
+    <h2>기장료는 이렇게 됩니다</h2>
+    <p class="sub">부가세 별도. 매출 규모와 거래량에 따라 상담 후 확정합니다.</p>
+    <div class="grid3 price" style="margin-top:22px">
+      <article class="card">
+        <span class="badge badge-if">개인사업자</span>
+        <h3>월 기장</h3>
+        <div class="amt">8만원<small>부터</small></div>
+        <div class="per">월, 부가세 별도</div>
+        <ul>
+          <li>월 기장과 증빙 정리</li>
+          <li>부가세 신고 연 2회</li>
+          <li>원천세·지급명세서·4대보험 신고</li>
+          <li>클로브 연동과 자금일보</li>
+        </ul>
+      </article>
+      <article class="card" style="border-top:6px solid var(--brand)">
+        <span class="badge badge-must">법인</span>
+        <h3>월 기장</h3>
+        <div class="amt">13만원<small>부터</small></div>
+        <div class="per">월, 부가세 별도</div>
+        <ul>
+          <li>월 기장과 증빙 정리</li>
+          <li>부가세 신고 연 4회</li>
+          <li>원천세·지급명세서·4대보험 신고</li>
+          <li>클로브 연동, 자금일보, 결산 전 손익</li>
+        </ul>
+      </article>
+      <article class="card">
+        <span class="badge badge-if">연 1회</span>
+        <h3>결산·세무조정</h3>
+        <div class="amt">별도<small>안내</small></div>
+        <div class="per">법인세·종합소득세 신고 수수료</div>
+        <ul>
+          <li>매출액과 자산 규모 기준 구간표로 안내</li>
+          <li>결산서와 신고서 작성, 세액공제·감면 검토</li>
+          <li>경정청구, 세무조사 대응은 별도 견적</li>
+        </ul>
+      </article>
+    </div>
+    <p class="pnote">여러 사업자를 함께 맡기시면 할인합니다. 월 손익 보고, 채권채무 관리, 지출결의 같은 아웃소싱은 범위를 정한 뒤 따로 견적합니다.</p>
+  </div>
+</section>
+
+<section id="faq">
   <div class="wrap">
     <span class="eyebrow">자주 묻는 질문</span>
     <h2>막히는 부분은 대부분 여기 있습니다</h2>
-    <details><summary>비용이 있나요</summary><p>없습니다. 클로브 AI 이용료는 없고 기장료는 기존 계약과 같습니다.</p></details>
-    <details><summary>인증서 비밀번호를 여러 번 틀렸습니다</summary><p>5회 오류 뒤에는 10분이 지나야 다시 시도할 수 있습니다. 10분 뒤 같은 화면에서 다시 입력하십시오.</p></details>
-    <details><summary>홈택스와 은행 중 하나만 연동됐다는 안내가 뜹니다</summary><p>나머지 한 곳을 같은 화면에서 추가로 연동하면 됩니다. 은행 인증서와 홈택스 인증서가 다르면 각각 등록합니다. 안 되면 화면을 캡처해 담당자에게 보내 주십시오.</p></details>
-    <details><summary>새로 만든 계좌나 카드가 안 보입니다</summary><p>인증서 등록 뒤에 만든 계좌와 카드는 자동으로 붙지 않습니다. 연동 화면에서 "기관 갱신"을 누르면 연결됩니다.</p></details>
-    <details><summary>본점과 지점이 따로 있습니다</summary><p>사업자등록번호마다 각각 연결합니다. 한 사람이 여러 회사를 전환해 볼 수 있습니다. 방법은 담당자가 안내드립니다.</p></details>
-    <details><summary>직원이 대신 연동해도 되나요</summary><p>됩니다. 소유자나 관리자가 그 직원에게 "연동 관리" 권한을 주면 됩니다. 급여·세무 화면은 세무담당자 권한이 있어야 열립니다.</p></details>
-    <details><summary>휴대폰으로도 되나요</summary><p>가입과 조회는 휴대폰으로 됩니다. 인증서 첫 등록만 Windows PC 에서 하고, 휴대폰에서는 이어서 진행할 링크를 받아 연결합니다.</p></details>
-    <details><summary>자동 손익이 진산 결산 숫자와 다릅니다</summary><p>자동 집계 손익은 결산 전 참고용입니다. 확정 재무제표는 진산회계법인이 회계처리와 결산을 거쳐 작성하며, 두 숫자가 다를 수 있습니다.</p></details>
+    <details><summary>클로브 이용료가 있나요</summary><p>없습니다. 기장료는 계약대로입니다.</p></details>
+    <details><summary>인증서 비밀번호를 여러 번 틀렸습니다</summary><p>5회 오류 뒤 10분이 지나면 다시 할 수 있습니다.</p></details>
+    <details><summary>홈택스와 은행 중 하나만 연동됐다고 합니다</summary><p>같은 화면에서 나머지 한 곳을 추가로 연동하면 됩니다.</p></details>
+    <details><summary>새 계좌나 카드가 안 보입니다</summary><p>연동 화면에서 "기관 갱신"을 누르면 붙습니다.</p></details>
+    <details><summary>직원이 대신 연동해도 되나요</summary><p>됩니다. 관리자가 그 직원에게 연동 관리 권한을 주면 됩니다.</p></details>
+    <details><summary>연동하면 계좌에서 돈이 나갈 수 있나요</summary><p>연동은 조회용입니다. 이체 기능은 회사가 권한을 준 사람이 은행 인증을 거쳐야 쓸 수 있고, 진산에는 권한이 없습니다.</p></details>
+    <details><summary>자동 손익이 진산 결산 숫자와 다릅니다</summary><p>자동 손익은 결산 전 참고용입니다. 확정 숫자는 진산 결산 뒤 재무제표입니다.</p></details>
   </div>
 </section>
 
@@ -452,15 +492,16 @@ footer{padding:26px 0 40px;font-size:13px;color:var(--muted)}
     <div class="contact">
       <div>
         <h2>막히면 바로 연락 주십시오</h2>
-        <p style="margin-top:8px">진산회계법인 여의도지점 담당 회계사 김다은. 초대장 재발송, 연동 오류 화면 확인, 본점·지점 설정을 도와드립니다.</p>
+        <p style="margin-top:8px">진산회계법인 여의도지점 김다은 회계사</p>
         <div class="copy"><code id="mail-2">1stdaeun@lighttax.biz</code><button class="copybtn" type="button" data-copy="mail-2">이메일 복사</button></div>
+        <div class="copy"><code id="tel-1">02-6952-4960</code><button class="copybtn" type="button" data-copy="tel-1">전화번호 복사</button></div>
       </div>
       <div class="cta" style="margin:0;justify-content:flex-end">
         <a class="btn btn-white" href="https://app.clobe.ai/invitation-by-tax-agent?tax_agent_id=34flxDOv1mxGcD3xqD5yb&amp;referrerId=34flvgl8wkBfmHu5xmUUt&amp;utm_source=connect_invite&amp;utm_medium=referral&amp;utm_campaign=clobe-connect_request-landing&amp;utm_content=34flxDOv1mxGcD3xqD5yb" target="_blank" rel="noopener">진산회계법인과 연결하기</a>
         <a class="btn btn-ghost" href="https://app.clobe.ai/clobe/data-manage" target="_blank" rel="noopener">연동 화면 열기</a>
       </div>
     </div>
-    <footer>화면 이미지 출처: 클로브 AI 기능 안내(docs.clobe.ai)와 클로브커넥트 기능 안내(docs-connect.clobe.ai)의 데모·예시 데이터 화면. 메뉴 이름은 2026년 11월 9일 갱신본 기준입니다.</footer>
+    <footer>진산회계법인 여의도지점. 서울 영등포구 국제금융로 106, 한진빌딩 306호. 화면 이미지는 클로브 AI 공식 안내(docs.clobe.ai)의 데모 데이터입니다.</footer>
   </div>
 </section>
 
